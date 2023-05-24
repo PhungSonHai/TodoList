@@ -3,10 +3,12 @@ import { View, Text, TextInput, TouchableOpacity, Alert, Keyboard } from 'react-
 import styles from './style'
 
 export default function Form(props) {
+    const [id, setId] = useState(0);
     const [task, setTask] = useState({
         textTask: '',
         check: false
     });
+
     function handleAddTask() {
         if(!task.textTask) 
         {
@@ -19,6 +21,9 @@ export default function Form(props) {
         }
         else
         {
+            setId(prev => prev + 1)
+            task.id = id
+
             props.onAddTask(task)
             setTask({
                 textTask: '',

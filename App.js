@@ -11,7 +11,7 @@ export default function App() {
     setListTask((state) => [...state, task])
   }
 
-  function handleDeleteTask(index) {
+  function handleDeleteTask(id) {
     Alert.alert('Warning', 'Do you want to delete this task?', [
       {
         text: 'Cancel',
@@ -21,7 +21,7 @@ export default function App() {
         text: 'OK', 
         onPress: () => {
           let tempList = [...listTask]
-          tempList.splice(index, 1)
+          tempList.splice(tempList.findIndex(item => item.id == id), 1)
           setListTask(tempList)
         }
       },
@@ -38,7 +38,7 @@ export default function App() {
         <ScrollView style={styles.wrapListWork}>
           {
             listTask.map((item, index) => (
-              <ListWork key={index} task={item.textTask} onDeleteTask={() => handleDeleteTask(index)} numberTask={index+1} checkComplete={item.check} />
+              <ListWork key={item.id} task={item.textTask} onDeleteTask={() => handleDeleteTask(item.id)} numberTask={index+1} checkComplete={item.check} />
             ))
           }
         </ScrollView>

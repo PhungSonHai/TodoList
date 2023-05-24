@@ -14,7 +14,7 @@ export default function App() {
   function handleDeleteTask(id) {
     Alert.alert('Warning', 'Do you want to delete this task?', [
       {
-        text: 'Cancel',
+        text: 'Cancelllll',
         style: 'cancel',
       },
       {
